@@ -5,11 +5,16 @@
 
 <svg width='1000' height='600'>
 
+
+
 <rect  width='1000' height='600' style='fill:rgb(192, 122, 65);' />                         <!-- Верхняя стена -->
 
 <rect y='400' width='1000' height='200' style='fill:rgb(180, 106, 64);' />                  <!-- Нижняя стена -->
 
 <rect y='400' width='1000' height='25' style='fill:rgb(108, 45, 13);' />                    <!-- Ерунда между стенами -->
+
+
+
 
 
 
@@ -58,6 +63,44 @@
 <rect x='835' y='485' width='10' height='115' style='fill:rgb(173, 173, 173);' />
 
 <rect x='835' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />
+
+
+<rect id='pryam' y='221' width='200' height='4' style='fill:rgb(230, 230, 230);' />             <!-- Линия -->
+
+
+
+
+<rect id='melok' x='130' y='465'  width='15' height='5' style='fill:rgb(255, 255, 255);' />    <!-- Мелок -->
+
+<animate 
+           xlink:href='#melok'
+           attributeName='y'
+           from='465'
+           to='220'
+           fill='freeze'
+           dur='2s'
+           begin='click'
+           id='melok-anim'
+/>
+<animate 
+           xlink:href='#melok'
+           attributeName='x'
+           from='130'
+           to='400'
+           fill='freeze'
+           dur='1s'
+           begin='melok-anim.end + 0.5s'
+           id='melok-start-anim'
+/>
+<animate 
+           xlink:href='#pryam'
+           attributeName='x'
+           from='0'
+           to='200'
+           fill='freeze'
+           dur='1s'
+           begin='melok-start-anim.begin'
+/>
 
 </svg>
 </body>
