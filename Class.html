@@ -26,17 +26,7 @@
 
 
 
-<rect x='100' y='470' width='150' height='75' style='fill:rgb(111, 55, 13);' />             <!-- Парта -->
 
-<rect x='86.5' y='470' width='175' height='15' style='fill:rgb(123, 74, 22);' />            <!-- Рабочая часть парты -->
-
-<rect x='105' y='485' width='10' height='115' style='fill:rgb(173, 173, 173);' />           <!-- Левая ножка -->
-
-<rect x='105' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />            <!-- "Стопа" левой ножки -->
-
-<rect x='235' y='485' width='10' height='115' style='fill:rgb(173, 173, 173);' />           <!-- Правая ножка -->
-
-<rect x='235' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />            <!-- "Стопа" правой ножки -->
 
 
 <rect x='400' y='470' width='150' height='75' style='fill:rgb(111, 55, 13);' />
@@ -65,9 +55,83 @@
 <rect x='835' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />
 
 
-<rect id='pryam' y='221' width='200' height='4' style='fill:rgb(230, 230, 230);' />             <!-- Линия -->
+
+<circle id="c1" onclick="score()" cx="452.5" cy="222.5" r="80" stroke="white" stroke-width="4" fill="rgb(38, 79, 26)" />            <!-- Окружность -->
+
+<rect id="rect1" x='370' y='50' width='165' height='175' style='fill:rgb(0, 0, 0);' />
+
+<animate 
+           xlink:href='#rect1'
+           attributeName='x'
+           from='370'
+           to='535'
+           fill='freeze'
+           dur='2s'
+           begin='click'
+           id='rect1-anim'
+/>
+
+<rect id="rect2" x='370' y='225' width='165' height='125' style='fill:rgb(200, 100, 200);' />
+
+<animate 
+           xlink:href='#rect2'
+           attributeName='x'
+           from='370'
+           to='205'
+           fill='freeze'
+           dur='2s'
+           begin='rect1-anim.end + 0.01s'
+           id='rect2-anim'
+/>
 
 
+<!--<circle id="c2" onclick="score()" cx="350" cy="150" r="80" stroke="white" stroke-width="4" fill="rgb(38, 79, 26)" />-->            <!-- Окружность -->
+
+<rect id='line1' x='200' y='221' width='550' height='4' style='fill:rgb(230, 230, 230);' />             <!-- Линия горизонтальная (временная) -->
+
+
+
+
+<rect id='line1' x='-407' y='221' width='550' height='4' style='fill:rgb(230, 230, 230);' />             <!-- Линия горизонтальная -->
+
+<rect  width='100' height='600' style='fill:rgb(192, 122, 65);' />
+
+<rect y='400' width='100' height='200' style='fill:rgb(180, 106, 64);' />
+
+<rect y='400' width='100' height='25' style='fill:rgb(108, 45, 13);' />
+
+
+<rect x='100' y='470' width='150' height='75' style='fill:rgb(111, 55, 13);' />             <!-- Парта -->
+
+<rect x='86.5' y='470' width='175' height='15' style='fill:rgb(123, 74, 22);' />            <!-- Рабочая часть парты -->
+
+<rect x='105' y='485' width='10' height='115' style='fill:rgb(173, 173, 173);' />           <!-- Левая ножка -->
+
+<rect x='105' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />            <!-- "Стопа" левой ножки -->
+
+<rect x='235' y='485' width='10' height='115' style='fill:rgb(173, 173, 173);' />           <!-- Правая ножка -->
+
+<rect x='235' y='590' width='10' height='10' style='fill:rgb(118, 118, 118);' />            <!-- "Стопа" правой ножки -->
+
+
+<rect x='100' y='50' width='100' height='300' style='fill:rgb(38, 79, 26);' />
+
+
+<rect id='line2' x='450' y='-150' width='4' height='250' style='fill:rgb(230, 230, 230);' />              <!-- Линия вертикальная -->
+
+<animate 
+           xlink:href='#line2'
+           attributeName='y'
+           from='-170'
+           to='80'
+           fill='freeze'
+           dur='1s'
+           begin='move1.end + 0.5'
+/>
+
+
+<rect x='380' y='50' width='145' height='30' style='fill:rgb(100, 200, 100);' />
+<rect x='380' width='145' height='50' style='fill:rgb(200, 200, 100);' />
 
 
 <rect id='melok' x='130' y='465'  width='15' height='5' style='fill:rgb(255, 255, 255);' />    <!-- Мелок -->
@@ -82,24 +146,58 @@
            begin='click'
            id='melok-anim'
 />
+
 <animate 
            xlink:href='#melok'
            attributeName='x'
            from='130'
-           to='400'
+           to='750'
            fill='freeze'
            dur='1s'
            begin='melok-anim.end + 0.5s'
-           id='melok-start-anim'
+           id='hor-anim'
 />
+
 <animate 
-           xlink:href='#pryam'
+           xlink:href='#line1'
            attributeName='x'
-           from='0'
+           from='-407'
            to='200'
            fill='freeze'
            dur='1s'
-           begin='melok-start-anim.begin'
+           begin='melok-anim.end + 0.5'
+/>
+
+<animate 
+           xlink:href='#melok'
+           attributeName='y'
+           from='220'
+           to='75'
+           fill='freeze'
+           dur='2s'
+           begin='hor-anim.end + 0.5s'
+/>
+
+<animate 
+           xlink:href='#melok'
+           attributeName='x'
+           from='750'
+           to='437'
+           fill='freeze'
+           dur='2s'
+           begin='hor-anim.end + 0.5s'
+           id='move1-anim'
+/>
+
+<animate 
+           xlink:href='#melok'
+           attributeName='y'
+           from='75'
+           to='327'
+           fill='freeze'
+           dur='1s'
+           begin='move1-anim.end + 0.5s'
+           id='vert-anim'
 />
 
 </svg>
